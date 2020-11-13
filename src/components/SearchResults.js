@@ -92,9 +92,10 @@ const SearchResults = (props) => {
                     <S.ResultInfo>Found {searchResults.length} cards</S.ResultInfo> 
                     <S.ResultsList>
                         {searchResults.map((card, index) => {
-                            if(card.imageUrl) {
+                            if(card.image_url) {
                                 return <SearchResultCard card={card} key={index} />
                             }
+                            return false
                         })}
                     </S.ResultsList>
 

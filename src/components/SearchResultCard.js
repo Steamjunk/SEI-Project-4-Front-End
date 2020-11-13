@@ -11,7 +11,7 @@ const SearchResultCard = (props) => {
     return (
         <S.ResultCard>
             <Link to={`/card/${cardData.id}`}>
-                <S.ResultCardArt src={cardData.imageUrl} alt={`${cardData.name} card art`} />
+                <S.ResultCardArt src={cardData.image_url} alt={`${cardData.name} card art`} />
             </Link>
             <S.CardInfo>
                 <h3>{cardData.name}</h3>
@@ -31,7 +31,7 @@ const SearchResultCard = (props) => {
                 <p><Bold>Power:</Bold> {cardData.power}</p>
                 <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
                 <p><Bold>Rarity:</Bold> {cardData.rarity}</p>
-                <p><Bold>Set:</Bold> {cardData.setName}</p>
+                <p><Bold>Set:</Bold> {cardData.set_name}</p>
             </S.CardInfo>
         </S.ResultCard>
     )
