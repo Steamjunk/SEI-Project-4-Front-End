@@ -8,8 +8,7 @@ import DeckPage from './components/DeckPage';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import { registerUser, loginUser, verifyUser } from './services/api_helper';
-import { Redirect, Route } from 'react-router';
-
+import { Route } from 'react-router';
 
 
 

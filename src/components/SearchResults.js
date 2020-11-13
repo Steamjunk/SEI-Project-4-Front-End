@@ -91,9 +91,9 @@ const SearchResults = (props) => {
                     <S.SearchHeader>Search Results</S.SearchHeader>
                     <S.ResultInfo>Found {searchResults.length} cards</S.ResultInfo> 
                     <S.ResultsList>
-                        {searchResults.map((card, index) => {
+                        {searchResults.map((card) => {
                             if(card.image_url) {
-                                return <SearchResultCard card={card} key={index} />
+                                return <SearchResultCard card={card} key={card.id} />
                             }
                             return false
                         })}
