@@ -64,7 +64,7 @@ class App extends Component {
         <Route path="/register">
           <RegisterForm handleRegister={this.handleRegister} />
         </Route>
-        <Route path="/card" component={CardShowPage} />
+        <Route path="/card/:id" component={CardShowPage} />
 
         <Footer />
       </div>
