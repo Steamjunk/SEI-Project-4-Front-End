@@ -22,12 +22,14 @@ class LoginForm extends Component {
   render() {
     return (
       <form onSubmit={(e) => this.props.handleLogin(e, this.state)}>
+        <label htmlFor="username">Username: </label>
         <input
           type="text"
           name="username"
           value={this.state.username}
           onChange={this.handleChange}
         />
+        <label htmlFor="password">Password: </label>
         <input
           type="password"
           name="password"

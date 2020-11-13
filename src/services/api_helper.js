@@ -4,14 +4,14 @@ const api = axios.create({
     baseURL: "http://localhost:9000" // heroku address goes here
 })
 
-
+// ---------------------- Auth ---------------------- //
 export const registerUser = async (registerData) => {
     try {
         const resp = await api.post('/auth/signup', registerData);
         localStorage.setItem('authToken', resp.data.token);
         api.defaults.headers.common.authorization = `Bearer ${resp.data.token}`;
         return resp.data.user;
-
+        
     } catch (err) {
         console.error(err)
     }
@@ -32,7 +32,7 @@ export const loginUser = async (loginData) => {
 
 export const verifyUser = async () => {
     const token = localStorage.getItem('authToken');
-
+    
     if (token) {
         api.defaults.headers.common.authorization = `Bearer ${token}`;
         try {
@@ -45,6 +45,20 @@ export const verifyUser = async () => {
     }
     return false;
 }
+
+// ---------------------- Deck ---------------------- //
+export const newDeck = async (formData) => {
+    console.log('lookit me!')
+    console.log(formData)
+    try {
+        const resp = await api.post(`/decks/new`, formData);
+        return resp.data
+    } catch (err) {
+        console.error(err)
+    }
+    return false
+}
+
 
 export const getUserDecks = async () => {
     try {
