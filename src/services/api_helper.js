@@ -41,12 +41,17 @@ export const verifyUser = async () => {
         } catch (err) {
             console.error(err)
         }
-
+        
     }
     return false;
 }
 
-
-// /auth/signup
-// /auth/login
-// /auth
+export const getUserDecks = async () => {
+    try {
+        const resp = await api.get('/decks');
+        return resp.data
+    } catch (err) {
+        console.error(err)
+    }
+    return false
+}

@@ -7,7 +7,7 @@ import CardShowPage from './components/CardShowPage';
 import DeckPage from './components/DeckPage';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
-import { registerUser, loginUser, verifyUser } from './services/api_helper';
+import { registerUser, loginUser, verifyUser, getUserDecks } from './services/api_helper';
 import { Route } from 'react-router';
 
 
@@ -17,7 +17,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentUser: null
+      currentUser: null,
+      userDecks: null
     }
   }
 
@@ -45,8 +46,16 @@ class App extends Component {
     this.setState({ currentUser: null });
   }
 
+  handleGetDecks = async () => {
+    const userDecks = await getUserDecks();
+    if (userDecks) {
+      this.setState({ userDecks })
+    }
+  }
+
   componentDidMount() {
     this.handleVerify();
+    this.handleGetDecks();
   }
 
   render() {
@@ -56,7 +65,9 @@ class App extends Component {
 
         <Route exact path="/" component={SearchPage} />
         <Route path="/account" component={AccountPage} />
-        <Route path="/decks" component={DeckPage} />
+        <Route path="/decks">
+          <DeckPage currentUser={this.state.currentUser} userDecks={this.state.userDecks} />
+        </Route>
         <Route path="/login">
           <LoginForm handleLogin={this.handleLogin} />
         </Route>

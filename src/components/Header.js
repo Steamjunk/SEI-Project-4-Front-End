@@ -27,10 +27,10 @@ const Header = (props) => {
                 :
                 <H.StyledNav>
                     <H.StyledNavLink>
-                        <Link to='/login' >Login</Link>
+                        <Link to='/login'>Login</Link>
                     </H.StyledNavLink>
                     <H.StyledNavLink>
-                        <Link to='/register' >Register</Link>
+                        <Link to='/register'>Register</Link>
                     </H.StyledNavLink>
                 </H.StyledNav>
             }
