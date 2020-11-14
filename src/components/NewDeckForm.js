@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
 const NewDeckForm = (props) => {
+    console.log(props)
     const [formData, setFormData] = useState({
         deckName: '',
-        deckDescription: ''
+        deckDescription: '',
+        user_id: props.user_id
 
     })
 
@@ -33,6 +35,7 @@ const NewDeckForm = (props) => {
                 onChange={handleChange}
             />
             <input type='submit' value='Add New Deck' />
+
         </form>
     )
 }

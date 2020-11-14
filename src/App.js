@@ -51,9 +51,14 @@ class App extends Component {
   }
 
   handleGetDecks = async () => {
-    const userDecks = await getUserDecks();
-    if (userDecks) {
-      this.setState({ userDecks })
+    console.log('getting decks')
+    if(this.state.currentUser) {
+      console.log('userDecks')
+      const userDecks = await getUserDecks(this.state.currentUser);
+      console.log(userDecks)
+      if (userDecks) {
+        this.setState({ userDecks })
+      }
     }
   }
 
@@ -64,12 +69,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
-
+        <Header 
+          currentUser={this.state.currentUser}
+          handleLogout={this.handleLogout}
+        />
         <Route exact path="/" component={SearchPage} />
         <Route path="/account" component={AccountPage} />
         <Route path="/decks">
-          <DeckPage currentUser={this.state.currentUser} handleNewDeck={this.handleNewDeck} handleGetDecks={this.handleGetDecks}  />
+          <DeckPage 
+            currentUser={this.state.currentUser}
+            userDecks={this.state.userDecks}
+            handleNewDeck={this.handleNewDeck}
+            handleGetDecks={this.handleGetDecks}
+          />
         </Route>
         <Route path="/login">
           <LoginForm handleLogin={this.handleLogin} />

@@ -63,6 +63,7 @@ export const newDeck = async (formData) => {
 export const getUserDecks = async () => {
     try {
         const resp = await api.get('/decks');
+        console.log(resp.data)
         return resp.data
     } catch (err) {
         console.error(err)
