@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import NewDeckForm from './NewDeckForm';
+import DeckBox from './DeckBox';
 
 const DeckPage = (props) => {
     const decks = useState(props.userDecks)
@@ -26,15 +27,10 @@ const DeckPage = (props) => {
                     {props.userDecks &&
                     <div>
                         <p>we got decks</p>
-                        {props.userDecks.map((deck, index) => {
-                            return <p>{deck.name}</p>
+                        {props.userDecks.map((deck) => {
+                            return <DeckBox deck={deck} key={deck.id} />
                         })}
-
-
-                        <p>{props.userDecks[0].name}</p>
-
                     </div>
-                    // map user decks
                     }
                 </div>
 
