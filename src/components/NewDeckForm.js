@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 
 const NewDeckForm = (props) => {
-    console.log(props)
     const [formData, setFormData] = useState({
         deckName: '',
         deckDescription: '',
         user_id: props.user_id
-
     })
 
     const handleChange = (e) => {
@@ -15,7 +13,6 @@ const NewDeckForm = (props) => {
             [e.target.name]: e.target.value
           }));
     }
-
 
     return (
         <form onSubmit={(e) => props.handleNewDeck(e, formData)} >

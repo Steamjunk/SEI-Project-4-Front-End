@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import NewDeckForm from './NewDeckForm';
 import DeckBox from './DeckBox';
 
 const DeckPage = (props) => {
-    const decks = useState(props.userDecks)
-
     useEffect(() => {
-        console.log('deckpage loaded')
         props.handleGetDecks();
     }, []);
 
@@ -16,13 +13,11 @@ const DeckPage = (props) => {
             {props.currentUser ?
             <div>
                 <h2>{props.currentUser.username}'s decks</h2>
-                {/* new deck form */}
                 <NewDeckForm 
                     handleNewDeck={props.handleNewDeck}
                     user_id={props.currentUser.id}
                 />
 
-                {/* deck container */}
                 <div>
                     {props.userDecks &&
                     <div>
@@ -33,19 +28,12 @@ const DeckPage = (props) => {
                     </div>
                     }
                 </div>
-
-
-
-
-                
             </div>
             :
                 <h3>You shouldn't be here...</h3>
             }
-
         </div>
     )
 }
-
 
 export default DeckPage

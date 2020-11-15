@@ -51,11 +51,8 @@ class App extends Component {
   }
 
   handleGetDecks = async () => {
-    console.log('getting decks')
     if(this.state.currentUser) {
-      console.log('userDecks')
       const userDecks = await getUserDecks(this.state.currentUser);
-      console.log(userDecks)
       if (userDecks) {
         this.setState({ userDecks })
       }
