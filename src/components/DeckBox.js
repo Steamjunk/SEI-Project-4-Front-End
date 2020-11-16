@@ -7,6 +7,7 @@ const DeckBox = (props) => {
             <h3>{props.deck.name}</h3>
             <p>{props.deck.description}</p>
             <p>{props.deck.commander_id}</p>
+
         </Link>
     )
 }

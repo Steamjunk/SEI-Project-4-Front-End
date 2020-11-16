@@ -15,7 +15,6 @@ const CardShowPage = () => {
                 setCardData(res)
             })
             .catch(err => console.error(err))
-            
     }
     useEffect(() => {
         callAPI();
@@ -25,10 +24,14 @@ const CardShowPage = () => {
     return (
         <div>
             <h4>Card Show Page</h4>
-            {cardData && 
+            {cardData &&
                 <div>
                     <h3>{cardData.name}</h3>
-                    <img src={cardData.image_url} alt={`${cardData.name} card art`} />
+                    {cardData.image_url ?
+                        <img src={cardData.image_url} alt={`${cardData.name} card art`} />
+                        :
+                        <img src='https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013&format=original' alt={`${cardData.name} card art`} />
+                    }
 
                     <h4>
                         {cardData.Supertypes && cardData.Supertypes.map((supertype, index) => {

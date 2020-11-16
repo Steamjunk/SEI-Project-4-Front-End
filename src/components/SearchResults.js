@@ -89,18 +89,15 @@ const SearchResults = (props) => {
                 ?
                 <div>
                     <S.SearchHeader>Search Results</S.SearchHeader>
-                    <S.ResultInfo>Found {searchResults.length} cards</S.ResultInfo> 
+                    <S.ResultInfo>Found {searchResults.length} cards</S.ResultInfo>
                     <S.ResultsList>
                         {searchResults.map((card) => {
-                            if(card.image_url) {
-                                return <SearchResultCard 
-                                            card={card} 
-                                            key={card.id} 
-                                            userDecks={props.userDecks}
-                                            handleAddCard={props.handleAddCard} 
-                                        />
-                            }
-                            return false
+                            return <SearchResultCard
+                                card={card}
+                                key={card.id}
+                                userDecks={props.userDecks}
+                                handleAddCard={props.handleAddCard}
+                            />
                         })}
                     </S.ResultsList>
 

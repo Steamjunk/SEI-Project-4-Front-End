@@ -29,7 +29,11 @@ const SearchResultCard = (props) => {
     return (
         <S.ResultCard>
             <Link to={`/card/${cardData.id}`}>
-                <S.ResultCardArt src={cardData.image_url} alt={`${cardData.name} card art`} />
+                {cardData.image_url ?
+                    <S.ResultCardArt src={cardData.image_url} alt={`${cardData.name} card art`} />
+                    :
+                    <S.ResultCardArt src='https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013&format=original' alt={`${cardData.name} card art`} />
+                }
             </Link>
             <S.CardInfo>
                 <h3>{cardData.name}</h3>

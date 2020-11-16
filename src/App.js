@@ -26,7 +26,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentUser: null
+      currentUser: null,
+      userDecks: null,
+      deckData: null
     }
   }
 
@@ -69,11 +71,8 @@ class App extends Component {
   }
 
   handleGetSingleDeck = async (deck_id) => {
-    const deck = await getDeck(deck_id)
-    console.log(deck);
-    if(deck) {
-      return deck;
-    }
+    const deckData = await getDeck(deck_id)
+    this.setState({ deckData })
   }
 
   handleAddCard = async (e, card_id, deck_id) => {
@@ -82,9 +81,7 @@ class App extends Component {
       card_id: card_id,
       deck_id: deck_id
     }
-    const deckCard = await addDeckCard(deckCardIds)
-    console.log(deckCard);
-
+    await addDeckCard(deckCardIds)
   }
 
   componentDidMount() {
@@ -113,7 +110,10 @@ class App extends Component {
           <Route path="/account" component={AccountPage} />
 
           <Route path="/decks/:deck_id" >
-            <DeckShowPage handleGetSingleDeck={this.handleGetSingleDeck} />
+            <DeckShowPage
+              handleGetSingleDeck={this.handleGetSingleDeck}
+              deckData={this.state.deckData}
+            />
           </Route>
 
           <Route path="/decks">
