@@ -13,7 +13,8 @@ const CardShowPage = () => {
             .then(res => res.json())
             .then(res => {
                 setCardData(res)
-            });
+            })
+            .catch(err => console.error(err))
             
     }
     useEffect(() => {

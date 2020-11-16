@@ -68,11 +68,21 @@ export const getUserDecks = async () => {
     return false
 }
 
+export const getDeck = async (deck_id) => {
+    try {
+        const resp = await api.get(`/decks/${deck_id}`);
+        return resp.data
+    } catch (err) {
+        console.error(err)
+    }
+    return false
+}
+
 export const addDeckCard = async (deckCardIds) => {
     try {
         console.log(deckCardIds.card_id)
         console.log(deckCardIds.deck_id)
-        const resp = await api.post('/decks/add', deckCardIds)
+        const resp = await api.post('/decks/addCard', deckCardIds)
         return resp.data
     } catch (err) {
         console.error(err)
