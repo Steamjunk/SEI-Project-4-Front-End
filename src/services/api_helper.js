@@ -89,3 +89,34 @@ export const addDeckCard = async (deckCardIds) => {
     }
     return false
 }
+
+// ---------------------- Search ---------------------- //
+export const getSupertypes = async () => {
+    try {
+        const resp = await api.get('/cards/supertypes');
+        return resp.data
+    } catch (err) {
+        console.error(err)
+    }
+    return false
+}
+
+export const getTypes = async () => {
+    try {
+        const resp = await api.get('/cards/types');
+        return resp.data
+    } catch (err) {
+        console.error(err)
+    }
+    return false
+}
+
+export const getSubtypes = async () => {
+    try {
+        const resp = await api.get('/cards/subtypes');
+        return resp.data
+    } catch (err) {
+        console.error(err)
+    }
+    return false
+}

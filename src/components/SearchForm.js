@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import * as S from '../styles/SearchPageStyles';
 
 
 const SearchForm = (props) => {
+    useEffect(() => {
+
+    });
+
     return (
-        <S.SearchForm onSubmit={(e) => {e.preventDefault();}}>
+        <S.SearchForm onSubmit={(e) => { e.preventDefault(); }}>
             <S.SearchFormContainer>
                 <h2>Find Cards</h2>
                 <input
@@ -20,14 +24,14 @@ const SearchForm = (props) => {
                     defaultValue='Set'
                 >
                     <option disabled hidden>Set</option>
-                    <option>Any</option>                
+                    <option>Any</option>
                     {/* get set names */}
                 </select>
             </S.SearchFormContainer>
             <S.SearchFormContainer>
                 <h3>Color Identity</h3>
                 <S.ColorContainer>
-                    <input 
+                    <input
                         type="checkbox"
                         id="white"
                         name="white"
@@ -89,33 +93,45 @@ const SearchForm = (props) => {
             </S.SearchFormContainer>
             <S.SearchFormContainer>
                 <h3>Card Type</h3>
-                <select
-                    name='supertype'
-                    onChange={props.handleInputChange}
-                    defaultValue='Supertype'
-                >
-                    <option disabled hidden>Supertype</option>
-                    <option>Any</option>                
-                    {/* get supertype names */}
-                </select>
-                <select
-                    name='type'
-                    onChange={props.handleInputChange}
-                    defaultValue='Type'
-                >
-                    <option disabled hidden>Type</option>
-                    <option>Any</option>                
-                    {/* get Type names */}
-                </select>
-                <select
-                    name='subtype'
-                    onChange={props.handleInputChange}
-                    defaultValue='Subtype'
-                >
-                    <option disabled hidden>Subtype</option>
-                    <option>Any</option>                
-                    {/* get Subtype names */}
-                </select>
+                {props.searchFields.supertypes &&
+                    <select
+                        name='supertype'
+                        onChange={props.handleInputChange}
+                        defaultValue='Supertype'
+                    >
+                        <option disabled hidden>Supertype</option>
+                        <option>Any</option>
+                        {props.searchFields.supertypes.map(supertype => {
+                            return <option key={supertype.id}>{supertype.supertype}</option>
+                        })}
+                    </select>
+                }
+                {props.searchFields.types &&
+                    <select
+                        name='type'
+                        onChange={props.handleInputChange}
+                        defaultValue='Type'
+                    >
+                        <option disabled hidden>Type</option>
+                        <option>Any</option>
+                        {props.searchFields.types.map(type => {
+                            return <option key={type.id}>{type.type}</option>
+                        })}
+                    </select>
+                }
+                {props.searchFields.subtypes &&
+                    <select
+                        name='subtype'
+                        onChange={props.handleInputChange}
+                        defaultValue='Subtype'
+                    >
+                        <option disabled hidden>Subtype</option>
+                        <option>Any</option>
+                        {props.searchFields.subtypes.map(subtype => {
+                            return <option key={subtype.id}>{subtype.subtype}</option>
+                        })}
+                    </select>
+                }
             </S.SearchFormContainer>
         </S.SearchForm>
     )

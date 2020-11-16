@@ -16,6 +16,9 @@ import {
   newDeck,
   addDeckCard,
   getDeck,
+  getSupertypes,
+  getTypes,
+  getSubtypes,
 } from './services/api_helper';
 import { Route, Switch } from 'react-router';
 
@@ -28,7 +31,12 @@ class App extends Component {
     this.state = {
       currentUser: null,
       userDecks: null,
-      deckData: null
+      deckData: null,
+      searchFields: {
+        supertypes: null,
+        types: null,
+        subtypes: null
+      }
     }
   }
 
@@ -84,8 +92,24 @@ class App extends Component {
     await addDeckCard(deckCardIds)
   }
 
+  handlePopulateSearchFields = async () => {
+    const supertypes = await getSupertypes();
+    const types = await getTypes();
+    const subtypes = await getSubtypes();
+
+    this.setState({ searchFields: {
+      supertypes,
+      types,
+      subtypes
+    } })
+    // console.log(supertypes)
+    // console.log(types)
+    // console.log(subtypes)
+  }
+
   componentDidMount() {
     this.handleVerify();
+    this.handlePopulateSearchFields();
     if (this.state.currentUser) {
       this.handleGetDecks();
     }
@@ -104,6 +128,7 @@ class App extends Component {
               userDecks={this.state.userDecks}
               handleGetDecks={this.handleGetDecks}
               handleAddCard={this.handleAddCard}
+              searchFields={this.state.searchFields}
             />
           </Route>
 

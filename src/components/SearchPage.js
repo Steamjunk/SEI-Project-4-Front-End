@@ -46,6 +46,7 @@ class SearchPage extends Component {
                 <SearchForm
                     searchParameters={this.state}
                     handleInputChange={this.handleInputChange}
+                    searchFields={this.props.searchFields}
                 />
                 <SearchResults
                     searchParameters={this.state}
