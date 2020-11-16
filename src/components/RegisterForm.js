@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import * as A from "../styles/AuthStyles";
 
-import { Link } from 'react-router-dom';
 
 class RegisterForm extends Component {
     constructor(props) {
@@ -21,7 +21,8 @@ class RegisterForm extends Component {
 
     render() {
         return (
-            <form onSubmit={(e) => this.props.handleRegister(e, this.state)} >
+            <A.StyledAuthForm onSubmit={(e) => this.props.handleRegister(e, this.state)} >
+                <h3>New Account</h3>
                 <label htmlFor="username">Username: </label>
                 <input
                     type='text'
@@ -37,8 +38,7 @@ class RegisterForm extends Component {
                     onChange={this.handleChange}
                 />
                 <input type='submit' value='Register' />
-                <Link to="/login">Login</Link>
-            </form>
+            </A.StyledAuthForm>
         )
     }
 }

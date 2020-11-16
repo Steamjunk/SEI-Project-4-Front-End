@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import * as A from "../styles/AuthStyles";
+
 
 class LoginForm extends Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class LoginForm extends Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    // aka const name = e.target.name; const value = e.target.value;
     this.setState({
       [name]: value
     })
@@ -21,7 +21,8 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={(e) => this.props.handleLogin(e, this.state)}>
+      <A.StyledAuthForm onSubmit={(e) => this.props.handleLogin(e, this.state)}>
+        <h3>Log In</h3>
         <label htmlFor="username">Username: </label>
         <input
           type="text"
@@ -37,8 +38,7 @@ class LoginForm extends Component {
           onChange={this.handleChange}
         />
         <input type="submit" value="Login" />
-        <Link to="/register">Register</Link>
-      </form>
+      </A.StyledAuthForm>
     )
   }
 }
