@@ -34,14 +34,14 @@ const CardShowPage = () => {
                     }
 
                     <h4>
-                        {cardData.supertypes && cardData.Supertypes.map((supertype, index) => {
-                            return <span key={index}>{supertype.supertype} </span>
+                        {cardData.supertypes && cardData.Supertypes.map(supertype => {
+                            return <span key={supertype.id}>{supertype.supertype} </span>
                         })}
-                        {cardData.Types && cardData.Types.map((type, index) => {
-                            return <span key={index}>{type.type} </span>
+                        {cardData.Types && cardData.Types.map(type => {
+                            return <span key={type.id}>{type.type} </span>
                         })}
-                        {cardData.Subtypes && cardData.Subtypes.map((subtype, index) => {
-                            return <span key={index}> - {subtype.subtype} </span>
+                        {cardData.Subtypes && cardData.Subtypes.map(subtype => {
+                            return <span key={subtype.id}> - {subtype.subtype} </span>
                         })}
                     </h4>
                     <p>{cardData.text}</p>
