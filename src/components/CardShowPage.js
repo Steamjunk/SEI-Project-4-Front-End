@@ -46,6 +46,7 @@ const CardShowPage = () => {
                     <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
                     <p><Bold>Rarity:</Bold> {cardData.rarity}</p>
                     <p><Bold>Set:</Bold> {cardData.set_name}</p>
+                    <button>Add to Deck</button>
                 </div>
             }
         </div>

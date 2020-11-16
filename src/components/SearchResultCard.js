@@ -7,6 +7,24 @@ import { Bold } from '../styles/GlobalStyle';
 
 const SearchResultCard = (props) => {
     const [cardData] = useState(props.card)
+    const [selectedDeckId, setSelectedDeckId] = useState(null)
+
+    let deckOptions = []
+    if (props.userDecks) {
+        props.userDecks.forEach(deck => {
+            console.log(deck.name)
+            deckOptions.push(
+                <option value={deck.id} key={deck.id} >{deck.name}</option>
+            )
+        })
+    }
+
+    const handleDeckChange = (e) => {
+        console.log(e.target.value)
+
+        setSelectedDeckId(e.target.value)
+    }
+
 
     return (
         <S.ResultCard>
@@ -32,6 +50,20 @@ const SearchResultCard = (props) => {
                 <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
                 <p><Bold>Rarity:</Bold> {cardData.rarity}</p>
                 <p><Bold>Set:</Bold> {cardData.set_name}</p>
+                {props.userDecks &&
+                    <form onSubmit={(e) => props.handleAddCard(e, cardData.id, selectedDeckId)} >
+                        <select
+                            onChange={handleDeckChange}
+                            defaultValue='Select Deck'
+                        >
+                            <option disabled hidden>Select Deck</option>
+
+                            {deckOptions}
+                        </select>
+                        <input type='submit' value='Add to Deck' />
+                    </form>
+                }
+
             </S.CardInfo>
         </S.ResultCard>
     )

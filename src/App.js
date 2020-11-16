@@ -7,7 +7,13 @@ import CardShowPage from './components/CardShowPage';
 import DeckPage from './components/DeckPage';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
-import { registerUser, loginUser, verifyUser, getUserDecks, newDeck } from './services/api_helper';
+import { registerUser, 
+         loginUser, 
+         verifyUser, 
+         getUserDecks, 
+         newDeck,
+         addDeckCard,
+         } from './services/api_helper';
 import { Route } from 'react-router';
 
 
@@ -51,7 +57,7 @@ class App extends Component {
   }
 
   handleGetDecks = async () => {
-    if(this.state.currentUser) {
+    if (this.state.currentUser) {
       const userDecks = await getUserDecks(this.state.currentUser);
       if (userDecks) {
         this.setState({ userDecks })
@@ -59,21 +65,42 @@ class App extends Component {
     }
   }
 
+  handleAddCard = async (e, card_id, deck_id) => {
+    e.preventDefault()
+    const deckCardIds = {
+      card_id: card_id,
+      deck_id: deck_id
+    }
+    const deckCard = await addDeckCard(deckCardIds) 
+    console.log(deckCard);
+
+  }
+
   componentDidMount() {
     this.handleVerify();
+    if (this.state.currentUser) {
+      this.handleGetDecks();
+    }
   }
 
   render() {
     return (
       <div className="App">
-        <Header 
+        <Header
           currentUser={this.state.currentUser}
           handleLogout={this.handleLogout}
         />
-        <Route exact path="/" component={SearchPage} />
+        <Route exact path="/">
+          <SearchPage
+            userDecks={this.state.userDecks}
+            handleGetDecks={this.handleGetDecks}
+            handleAddCard={this.handleAddCard}
+          />
+        </Route>
+
         <Route path="/account" component={AccountPage} />
         <Route path="/decks">
-          <DeckPage 
+          <DeckPage
             currentUser={this.state.currentUser}
             userDecks={this.state.userDecks}
             handleNewDeck={this.handleNewDeck}

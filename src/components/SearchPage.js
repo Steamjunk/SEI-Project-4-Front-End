@@ -49,6 +49,8 @@ class SearchPage extends Component {
                 />
                 <SearchResults
                     searchParameters={this.state}
+                    userDecks={this.props.userDecks}
+                    handleAddCard={this.props.handleAddCard}
                 />
             </S.SearchPage>
         )
