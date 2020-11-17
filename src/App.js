@@ -71,12 +71,10 @@ class App extends Component {
   }
 
   handleGetDecks = async (user_id) => {
-    // if (this.state.currentUser) {
-      const userDecks = await getUserDecks();
-      if (userDecks) {
-        this.setState({ userDecks })
-      }
-    // }
+    const userDecks = await getUserDecks();
+    if (userDecks) {
+      this.setState({ userDecks })
+    }
   }
 
   handleGetSingleDeck = async (deck_id) => {
@@ -105,9 +103,6 @@ class App extends Component {
         subtypes
       }
     })
-    // console.log(supertypes)
-    // console.log(types)
-    // console.log(subtypes)
   }
 
   componentDidMount() {
@@ -129,7 +124,6 @@ class App extends Component {
           <Route exact path="/">
             <SearchPage
               userDecks={this.state.userDecks}
-              // handleGetDecks={this.handleGetDecks}
               handleAddCard={this.handleAddCard}
               searchFields={this.state.searchFields}
             />
@@ -149,7 +143,6 @@ class App extends Component {
               currentUser={this.state.currentUser}
               userDecks={this.state.userDecks}
               handleNewDeck={this.handleNewDeck}
-              // handleGetDecks={this.handleGetDecks}
             />
           </Route>
 
@@ -166,11 +159,10 @@ class App extends Component {
               userDecks={this.state.userDecks}
               handleAddCard={this.handleAddCard}
             />
-
           </Route>
         </Switch>
 
-          <Footer />
+        <Footer />
       </div>
     );
   }

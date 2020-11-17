@@ -74,11 +74,7 @@ const CardShowPage = (props) => {
             {cardData &&
                 <div>
                     <h3>{cardData.name}</h3>
-                    {cardData.image_url ?
-                        <img src={cardData.image_url} alt={`${cardData.name} card art`} />
-                        :
-                        <img src='https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013&format=original' alt={`${cardData.name} card art`} />
-                    }
+                    <img src={cardData.image_url} alt={`${cardData.name} card art`} />
 
                     <h4>
                         {cardData.supertypes && cardData.supertypes.map(supertype => {

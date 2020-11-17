@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import * as S from '../styles/SearchPageStyles';
-
+import {SetNames} from '../setNames';
 
 const SearchForm = (props) => {
     useEffect(() => {
@@ -25,7 +25,9 @@ const SearchForm = (props) => {
                 >
                     <option disabled hidden>Set</option>
                     <option>Any</option>
-                    {/* get set names */}
+                    {SetNames.map((setName, index) => {
+                        return <option key={index}>{setName}</option>
+                    })}
                 </select>
             </S.SearchFormContainer>
             <S.SearchFormContainer>

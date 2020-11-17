@@ -10,7 +10,7 @@ const SearchResultCard = (props) => {
     const [selectedDeckId, setSelectedDeckId] = useState(null)
 
     let isCreature = false;
-    if(cardData.types) {
+    if (cardData.types) {
         cardData.types.forEach(type => {
             console.log(type)
             if (type.type === "Creature") {
@@ -20,7 +20,7 @@ const SearchResultCard = (props) => {
     }
 
     let isLegendary = false;
-    if(cardData.supertypes) {
+    if (cardData.supertypes) {
         cardData.supertypes.forEach(supertype => {
             console.log(supertype);
             if (supertype.supertype === "Legendary") {
@@ -36,7 +36,7 @@ const SearchResultCard = (props) => {
         commanderCandidate = false;
     }
 
-    
+
 
     let deckOptions = []
     if (props.userDecks) {
@@ -58,11 +58,7 @@ const SearchResultCard = (props) => {
     return (
         <S.ResultCard>
             <Link to={`/card/${cardData.id}`}>
-                {cardData.image_url ?
-                    <S.ResultCardArt src={cardData.image_url} alt={`${cardData.name} card art`} />
-                    :
-                    <S.ResultCardArt src='https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013&format=original' alt={`${cardData.name} card art`} />
-                }
+                <S.ResultCardArt src={cardData.image_url} alt={`${cardData.name} card art`} />
             </Link>
             <S.CardInfo>
                 <h3>{cardData.name}</h3>
@@ -80,10 +76,10 @@ const SearchResultCard = (props) => {
                 <p>{cardData.text}</p>
                 <p>{cardData.flavor}</p>
                 {isCreature &&
-                <div>
-                    <p><Bold>Power:</Bold> {cardData.power}</p>
-                    <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
-                </div>
+                    <div>
+                        <p><Bold>Power:</Bold> {cardData.power}</p>
+                        <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
+                    </div>
                 }
                 <p><Bold>Rarity:</Bold> {cardData.rarity}</p>
                 <p><Bold>Set:</Bold> {cardData.set_name}</p>
