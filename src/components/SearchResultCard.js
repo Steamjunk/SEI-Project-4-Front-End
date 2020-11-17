@@ -9,6 +9,35 @@ const SearchResultCard = (props) => {
     const [cardData] = useState(props.card)
     const [selectedDeckId, setSelectedDeckId] = useState(null)
 
+    let isCreature = false;
+    if(cardData.types) {
+        cardData.types.forEach(type => {
+            console.log(type)
+            if (type.type === "Creature") {
+                isCreature = true;
+            }
+        });
+    }
+
+    let isLegendary = false;
+    if(cardData.supertypes) {
+        cardData.supertypes.forEach(supertype => {
+            console.log(supertype);
+            if (supertype.supertype === "Legendary") {
+                isLegendary = true;
+            }
+        });
+    }
+
+    let commanderCandidate;
+    if (isCreature && isLegendary) {
+        commanderCandidate = true;
+    } else {
+        commanderCandidate = false;
+    }
+
+    
+
     let deckOptions = []
     if (props.userDecks) {
         props.userDecks.forEach(deck => {
@@ -50,8 +79,12 @@ const SearchResultCard = (props) => {
                 </h4>
                 <p>{cardData.text}</p>
                 <p>{cardData.flavor}</p>
-                <p><Bold>Power:</Bold> {cardData.power}</p>
-                <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
+                {isCreature &&
+                <div>
+                    <p><Bold>Power:</Bold> {cardData.power}</p>
+                    <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
+                </div>
+                }
                 <p><Bold>Rarity:</Bold> {cardData.rarity}</p>
                 <p><Bold>Set:</Bold> {cardData.set_name}</p>
                 {props.userDecks &&
@@ -64,10 +97,15 @@ const SearchResultCard = (props) => {
 
                             {deckOptions}
                         </select>
+                        {commanderCandidate &&
+                            <div>
+                                <input type='checkbox' name='makeCommander' />
+                                <label htmlFor="makeCommander">Make Commander</label>
+                            </div>
+                        }
                         <input type='submit' value='Add to Deck' />
                     </form>
                 }
-
             </S.CardInfo>
         </S.ResultCard>
     )

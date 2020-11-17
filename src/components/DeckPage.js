@@ -4,9 +4,9 @@ import NewDeckForm from './NewDeckForm';
 import DeckBox from './DeckBox';
 
 const DeckPage = (props) => {
-    useEffect(() => {
-        props.handleGetDecks();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    // useEffect(() => {
+    //     props.handleGetDecks();
+    // }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div>

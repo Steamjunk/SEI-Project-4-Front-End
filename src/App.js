@@ -55,6 +55,7 @@ class App extends Component {
   handleVerify = async () => {
     const currentUser = await verifyUser();
     if (currentUser) {
+      this.handleGetDecks();
       this.setState({ currentUser });
     }
   }
@@ -69,13 +70,13 @@ class App extends Component {
     await newDeck(formData);
   }
 
-  handleGetDecks = async () => {
-    if (this.state.currentUser) {
-      const userDecks = await getUserDecks(this.state.currentUser);
+  handleGetDecks = async (user_id) => {
+    // if (this.state.currentUser) {
+      const userDecks = await getUserDecks();
       if (userDecks) {
         this.setState({ userDecks })
       }
-    }
+    // }
   }
 
   handleGetSingleDeck = async (deck_id) => {
@@ -97,11 +98,13 @@ class App extends Component {
     const types = await getTypes();
     const subtypes = await getSubtypes();
 
-    this.setState({ searchFields: {
-      supertypes,
-      types,
-      subtypes
-    } })
+    this.setState({
+      searchFields: {
+        supertypes,
+        types,
+        subtypes
+      }
+    })
     // console.log(supertypes)
     // console.log(types)
     // console.log(subtypes)
@@ -126,7 +129,7 @@ class App extends Component {
           <Route exact path="/">
             <SearchPage
               userDecks={this.state.userDecks}
-              handleGetDecks={this.handleGetDecks}
+              // handleGetDecks={this.handleGetDecks}
               handleAddCard={this.handleAddCard}
               searchFields={this.state.searchFields}
             />
@@ -146,7 +149,7 @@ class App extends Component {
               currentUser={this.state.currentUser}
               userDecks={this.state.userDecks}
               handleNewDeck={this.handleNewDeck}
-              handleGetDecks={this.handleGetDecks}
+              // handleGetDecks={this.handleGetDecks}
             />
           </Route>
 
@@ -158,10 +161,16 @@ class App extends Component {
             <RegisterForm handleRegister={this.handleRegister} />
           </Route>
 
-          <Route path="/card/:id" component={CardShowPage} />
+          <Route path="/card/:id">
+            <CardShowPage
+              userDecks={this.state.userDecks}
+              handleAddCard={this.handleAddCard}
+            />
+
+          </Route>
         </Switch>
 
-        <Footer />
+          <Footer />
       </div>
     );
   }
