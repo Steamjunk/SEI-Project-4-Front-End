@@ -12,7 +12,6 @@ const SearchResultCard = (props) => {
     let isCreature = false;
     if (cardData.types) {
         cardData.types.forEach(type => {
-            console.log(type)
             if (type.type === "Creature") {
                 isCreature = true;
             }
@@ -22,7 +21,6 @@ const SearchResultCard = (props) => {
     let isLegendary = false;
     if (cardData.supertypes) {
         cardData.supertypes.forEach(supertype => {
-            console.log(supertype);
             if (supertype.supertype === "Legendary") {
                 isLegendary = true;
             }
@@ -41,7 +39,6 @@ const SearchResultCard = (props) => {
     let deckOptions = []
     if (props.userDecks) {
         props.userDecks.forEach(deck => {
-            console.log(deck.name)
             deckOptions.push(
                 <option value={deck.id} key={deck.id} >{deck.name}</option>
             )
@@ -49,8 +46,6 @@ const SearchResultCard = (props) => {
     }
 
     const handleDeckChange = (e) => {
-        console.log(e.target.value)
-
         setSelectedDeckId(e.target.value)
     }
 

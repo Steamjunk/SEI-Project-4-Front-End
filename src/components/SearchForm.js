@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import * as S from '../styles/SearchPageStyles';
 import { SetNames } from '../setNames';
 
 const SearchForm = (props) => {
-    // useEffect(() => {
-
-    // });
-
     return (
         <S.SearchForm onSubmit={(e) => { e.preventDefault(); }}>
             <S.SearchFormContainer>

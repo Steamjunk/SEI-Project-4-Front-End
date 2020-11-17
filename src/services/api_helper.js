@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "https://the-command-tower.herokuapp.com" // heroku address goes here
-    // baseURL: "http://localhost:9000" // heroku address goes here
+    // baseURL: "https://the-command-tower.herokuapp.com" // heroku address goes here
+    baseURL: "http://localhost:9000" // heroku address goes here
 })
 
 // ---------------------- Auth ---------------------- //
@@ -62,7 +62,7 @@ export const newDeck = async (formData) => {
 export const getUserDecks = async () => {
     try {
         const resp = await api.get('/decks');
-        return resp.data
+        return resp.data;
     } catch (err) {
         console.error(err)
     }
@@ -72,23 +72,31 @@ export const getUserDecks = async () => {
 export const getDeck = async (deck_id) => {
     try {
         const resp = await api.get(`/decks/${deck_id}`);
-        return resp.data
+        return resp.data;
     } catch (err) {
-        console.error(err)
+        console.error(err);
+    }
+    return false
+}
+
+export const deleteDeck = async (deck_id) => {
+    try {
+        const resp = await api.delete(`/decks/${deck_id}`);
+        return resp
+    } catch(err) {
+        console.error(err);
     }
     return false
 }
 
 export const addDeckCard = async (deckCardIds) => {
     try {
-        console.log(deckCardIds.card_id)
-        console.log(deckCardIds.deck_id)
-        const resp = await api.post('/decks/addCard', deckCardIds)
-        return resp.data
+        const resp = await api.post('/decks/addCard', deckCardIds);
+        return resp.data;
     } catch (err) {
-        console.error(err)
+        console.error(err);
     }
-    return false
+    return false;
 }
 
 // ---------------------- Search ---------------------- //

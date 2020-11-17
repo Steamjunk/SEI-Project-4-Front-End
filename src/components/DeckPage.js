@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import NewDeckForm from './NewDeckForm';
 import DeckBox from './DeckBox';
 
 const DeckPage = (props) => {
-    // useEffect(() => {
-    //     props.handleGetDecks();
-    // }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
     return (
         <div>
             {props.currentUser ?

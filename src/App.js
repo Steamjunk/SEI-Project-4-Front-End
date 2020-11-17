@@ -19,6 +19,7 @@ import {
   getSupertypes,
   getTypes,
   getSubtypes,
+  deleteDeck
 } from './services/api_helper';
 import { Route, Switch } from 'react-router';
 
@@ -75,6 +76,11 @@ class App extends Component {
     if (userDecks) {
       this.setState({ userDecks })
     }
+  }
+
+  handleDeleteDeck = async (deck_id) => {
+    const resp = await deleteDeck(deck_id)
+    console.log(resp)
   }
 
   handleGetSingleDeck = async (deck_id) => {
@@ -135,6 +141,7 @@ class App extends Component {
             <DeckShowPage
               handleGetSingleDeck={this.handleGetSingleDeck}
               deckData={this.state.deckData}
+              handleDeleteDeck={this.handleDeleteDeck}
             />
           </Route>
 

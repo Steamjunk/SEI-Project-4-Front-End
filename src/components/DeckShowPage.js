@@ -26,6 +26,9 @@ const DeckShowPage = (props) => {
                             />
                         })}
                     </div>
+                    <button onClick={() => props.handleDeleteDeck(deck_id)}>
+                        Delete Deck
+                    </button>
                 </div>
             }
         </div>

@@ -16,7 +16,6 @@ const CardShowPage = (props) => {
     if (cardData) {
         if (cardData.types) {
             cardData.types.forEach(type => {
-                console.log(type)
                 if (type.type === "Creature") {
                     isCreature = true;
                 }
@@ -25,7 +24,6 @@ const CardShowPage = (props) => {
 
         if (cardData.supertypes) {
             cardData.supertypes.forEach(supertype => {
-                console.log(supertype);
                 if (supertype.supertype === "Legendary") {
                     isLegendary = true;
                 }
@@ -33,7 +31,6 @@ const CardShowPage = (props) => {
         }
 
         if (isCreature && isLegendary) {
-            console.log('commandoooooooo')
             commanderCandidate = true;
         }
     }
@@ -41,7 +38,6 @@ const CardShowPage = (props) => {
     let deckOptions = []
     if (props.userDecks) {
         props.userDecks.forEach(deck => {
-            console.log(deck.name)
             deckOptions.push(
                 <option value={deck.id} key={deck.id} >{deck.name}</option>
             )
@@ -49,15 +45,13 @@ const CardShowPage = (props) => {
     }
 
     const handleDeckChange = (e) => {
-        console.log(e.target.value)
-
         setSelectedDeckId(e.target.value)
     }
 
 
     const callAPI = () => {
-        fetch(`https://the-command-tower.herokuapp.com/cards/show/${id}`)
-        // fetch(`http://localhost:9000/cards/show/${id}`)
+        // fetch(`https://the-command-tower.herokuapp.com/cards/show/${id}`)
+        fetch(`http://localhost:9000/cards/show/${id}`)
             .then(res => res.json())
             .then(res => {
                 setCardData(res)
