@@ -6,18 +6,20 @@ export const SearchPage = Styled.header`
 `
 
 export const SearchForm = Styled.form`
-    background: green;
+    background: #d0b88b;
     display: flex;
     flex-flow: row nowrap;
+    border: solid 2px #1F1300;
+    border-radius: 10px;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 10px;
     width: 60vw;
 `
 
 export const SearchFormContainer = Styled.div`
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
     width: 30%;
     align-items: center;
     padding: 10px;
@@ -26,6 +28,7 @@ export const SearchFormContainer = Styled.div`
 export const ColorContainer = Styled.div`
     width: 50%;
 `
+
 
 export const SearchResults =Styled.div`
     background: lemonchiffon;
@@ -55,9 +58,11 @@ export const ResultCard = Styled.div`
     align-items: center;
     justify-content: center;
     width: 30%;
-    background: lightblue;
+    background: #BAF3EC;
     padding: 10px;
     margin: 5px;
+    border: solid 2px #1F1300;
+    border-radius: 10px;
 `
 
 export const ResultCardArt = Styled.img`
@@ -67,7 +72,6 @@ export const ResultCardArt = Styled.img`
         opacity: 70%;
     }
 `
-
 
 export const CardInfo = Styled.div`
     padding: 10px;

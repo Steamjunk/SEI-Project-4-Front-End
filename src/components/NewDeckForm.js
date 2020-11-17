@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import * as D from '../styles/DeckPageStyle'
+
 
 const NewDeckForm = (props) => {
     const [formData, setFormData] = useState({
@@ -15,25 +17,25 @@ const NewDeckForm = (props) => {
     }
 
     return (
-        <form onSubmit={(e) => props.handleNewDeck(e, formData)} >
-            <h2>New Deck Form</h2>
-            <label htmlFor="deckName">Deck Name: </label>
-            <input
+        <D.NewDeckForm onSubmit={(e) => props.handleNewDeck(e, formData)} >
+            <h2>Make A New Deck</h2>
+            <D.StyledLabel htmlFor="deckName">Deck Name: </D.StyledLabel>
+            <D.StyledInput
                 type='text'
                 name='deckName'
                 value={formData.deckName}
                 onChange={handleChange}
             />
-            <label htmlFor="deckDescription">Deck Description: </label>
-            <input
+            <D.StyledLabel htmlFor="deckDescription">Deck Description: </D.StyledLabel>
+            <D.StyledInput
                 type='text'
                 name='deckDescription'
                 value={formData.deckDescription}
                 onChange={handleChange}
             />
-            <input type='submit' value='Add New Deck' />
+            <D.StyledInput type='submit' value='Add New Deck' />
 
-        </form>
+        </D.NewDeckForm>
     )
 }
 

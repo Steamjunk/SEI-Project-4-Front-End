@@ -7,6 +7,7 @@ export const StyledHeader = Styled.header`
     align-items: center;
     background: #b5904c;
     padding: 10px;
+    height: 10vh;
 `
 
 export const StyledNav = Styled.nav`

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { Bold } from '../styles/GlobalStyle';
 
+import * as C from '../styles/CardShowStyle'
+
 
 const CardShowPage = (props) => {
     let { id } = useParams();
@@ -64,56 +66,55 @@ const CardShowPage = (props) => {
 
 
     return (
-        <div>
-            <h4>Card Show Page</h4>
+        <C.CardShowPage>
             {cardData &&
-                <div>
-                    <h3>{cardData.name}</h3>
-                    <img src={cardData.image_url} alt={`${cardData.name} card art`} />
-
-                    <h4>
-                        {cardData.supertypes && cardData.supertypes.map(supertype => {
-                            return <span key={supertype.id}>{supertype.supertype} </span>
-                        })}
-                        {cardData.types && cardData.types.map(type => {
-                            return <span key={type.id}>{type.type} </span>
-                        })}
-                        {cardData.subtypes && cardData.subtypes.map(subtype => {
-                            return <span key={subtype.id}> - {subtype.subtype} </span>
-                        })}
-                    </h4>
-                    <p>{cardData.text}</p>
-                    <p>{cardData.flavor}</p>
-                    {isCreature &&
-                        <div>
-                            <p><Bold>Power:</Bold> {cardData.power}</p>
-                            <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
-                        </div>
-                    }
-                    <p><Bold>Rarity:</Bold> {cardData.rarity}</p>
-                    <p><Bold>Set:</Bold> {cardData.set_name}</p>
-                    {props.userDecks &&
-                        <form onSubmit={(e) => props.handleAddCard(e, cardData.id, selectedDeckId)} >
-                            <select
-                                onChange={handleDeckChange}
-                                defaultValue='Select Deck'
-                            >
-                                <option disabled hidden>Select Deck</option>
-
-                                {deckOptions}
-                            </select>
-                            {commanderCandidate &&
-                                <div>
-                                    <input type='checkbox' name='makeCommander' />
-                                    <label htmlFor="makeCommander">Make Commander</label>
-                                </div>
-                            }
-                            <input type='submit' value='Add to Deck' />
-                        </form>
-                    }
-                </div>
+                <C.CardContainer>
+                    <C.CardShowImage src={cardData.image_url} alt={`${cardData.name} card art`} />
+                    <C.CardInfo>
+                        <h3>{cardData.name}</h3>
+                        <h4>
+                            {cardData.supertypes && cardData.supertypes.map(supertype => {
+                                return <span key={supertype.id}>{supertype.supertype} </span>
+                            })}
+                            {cardData.types && cardData.types.map(type => {
+                                return <span key={type.id}>{type.type} </span>
+                            })}
+                            {cardData.subtypes && cardData.subtypes.map(subtype => {
+                                return <span key={subtype.id}> - {subtype.subtype} </span>
+                            })}
+                        </h4>
+                        <p>{cardData.text}</p>
+                        <p>{cardData.flavor}</p>
+                        {isCreature &&
+                            <div>
+                                <p><Bold>Power:</Bold> {cardData.power}</p>
+                                <p><Bold>Toughness:</Bold> {cardData.toughness}</p>
+                            </div>
+                        }
+                        <p><Bold>Rarity:</Bold> {cardData.rarity}</p>
+                        <p><Bold>Set:</Bold> {cardData.set_name}</p>
+                        {props.userDecks &&
+                            <form onSubmit={(e) => props.handleAddCard(e, cardData.id, selectedDeckId)} >
+                                <select
+                                    onChange={handleDeckChange}
+                                    defaultValue='Select Deck'
+                                >
+                                    <option disabled hidden>Select Deck</option>
+                                    {deckOptions}
+                                </select>
+                                {commanderCandidate &&
+                                    <div>
+                                        <input type='checkbox' name='makeCommander' />
+                                        <label htmlFor="makeCommander">Make Commander</label>
+                                    </div>
+                                }
+                                <input type='submit' value='Add to Deck' />
+                            </form>
+                        }
+                    </C.CardInfo>
+                </C.CardContainer>
             }
-        </div>
+        </C.CardShowPage>
     )
 }
 

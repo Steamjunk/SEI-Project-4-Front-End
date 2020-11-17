@@ -1,9 +1,13 @@
-import Styled, {createGlobalStyle} from 'styled-components';
+import Styled, { createGlobalStyle } from 'styled-components';
 
 
 export const GlobalStyle = createGlobalStyle`
+  body {
+    background: lemonchiffon;
+  }
+
   a {
-    color: black;
+    color: #1f1300;
     text-decoration: none
   }
   a:visited {

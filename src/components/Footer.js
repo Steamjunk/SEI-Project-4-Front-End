@@ -1,10 +1,12 @@
 import React from 'react'
 
+import * as F from '../styles/FooterStyle'
+
 const Footer = () => {
     return (
-        <div>
-            <h4>The Footer</h4>
-        </div>
+        <F.StyledFooter>
+            <F.FooterText>By Chris Myers</F.FooterText>
+        </F.StyledFooter>
     )
 }
 
