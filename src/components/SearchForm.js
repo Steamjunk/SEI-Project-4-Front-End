@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 
 import * as S from '../styles/SearchPageStyles';
-import {SetNames} from '../setNames';
+import { SetNames } from '../setNames';
 
 const SearchForm = (props) => {
-    useEffect(() => {
+    // useEffect(() => {
 
-    });
+    // });
 
     return (
         <S.SearchForm onSubmit={(e) => { e.preventDefault(); }}>
@@ -21,7 +21,7 @@ const SearchForm = (props) => {
                 <select
                     name='set'
                     onChange={props.handleInputChange}
-                    defaultValue='Set'
+                    defaultValue='Any'
                 >
                     <option disabled hidden>Set</option>
                     <option>Any</option>

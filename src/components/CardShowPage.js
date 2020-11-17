@@ -56,6 +56,7 @@ const CardShowPage = (props) => {
 
 
     const callAPI = () => {
+        // fetch(`https://the-command-tower.herokuapp.com/cards/show/${id}`)
         fetch(`http://localhost:9000/cards/show/${id}`)
             .then(res => res.json())
             .then(res => {

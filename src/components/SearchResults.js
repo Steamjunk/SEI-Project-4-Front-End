@@ -16,6 +16,7 @@ const SearchResults = (props) => {
     }
 
     const buildUrl = () => {
+        // let searchUrl = 'https://the-command-tower.herokuapp.com/'
         let searchUrl = 'http://localhost:9000/cards/'
 
         if (props.searchParameters.name) {
