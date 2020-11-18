@@ -11,6 +11,7 @@ export const StyledDeckBox = Styled.div`
     padding: 10px;
     margin: 15px;
     background: #FEDC97;
+    width: 40vw;
 `
 
 export const DeckPageContainer = Styled.div`

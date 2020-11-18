@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    // baseURL: "https://the-command-tower.herokuapp.com" // heroku address goes here
-    baseURL: "http://localhost:9000" // heroku address goes here
+    baseURL: "https://the-command-tower.herokuapp.com" // heroku address goes here
+    // baseURL: "http://localhost:9000" // heroku address goes here
 })
 
 // ---------------------- Auth ---------------------- //
