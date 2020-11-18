@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# SEI-Project-4
+Capstone project for the Software Engineering Immersive
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Magic the Gathering Commander deck builder
+Users may create an account to build and track a collection of Commander decks of Magic the Gathering (MTG) cards. Commander is a game format of MTG where decks consist of 99 cards plus one Commander on the side. Card data will come from an external API and be stored in a database connected to the app. The app will display an analysis of a particular deck based on its composition and allow the user to draw sample hands.
 
-## Available Scripts
+## Features
+### MVP
+- User account features
+  - A user may create an account if they have not already.
+  - A user may log into their account if they have created one.
+  - A user may delete their account.
+  - A user may modify their account information: username, password, etc.
+  
+- User deck collection features
+  - A user may create a new, empty deck and define some information about it. Name, description
+  - A user may maintain a set of many Commander decks
+  - A user may rename a deck in their collection
+  - A user may remove a deck from their collection
+  
+- Card search page features
+  - A user may search or browse for a card by multiple attributes including:
+    - Name
+    - Set
+    - Color(s)
+    - Card type
+  - A user may add a card to a deck they have already created from the search page
+  - A user may click on a card from search results and go to a show page for that card
+  
+- Card show page features
+  - This page shows information available about a card including:
+    - Artwork
+    - Text and data printed on the card
+    - Rulings and clarifications provided
+  - A user may add or remove a card from a deck from here
 
-In the project directory, you can run:
+- Deck page features
+  - A user may remove a deck from their collection from this page
+  - A user may modify deck information (Name, description) on this page
+  - A user may select a Legendary creature to be the Commander of a deck.
+  - A user may draw a sample hand of 7 cards from this deck.
+  - A user may draw additional cards to simulate the first turns of a game
+  - A list of cards in the deck is displayed.
+  - Use a data visualization tool to plot deck analysis:
+    - Display mana curve (bar chart would be effective)
+    - Display makeup of card types (pie chart would be effective)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Stretch
+- Card search page stretch features
+  - A user may select a deck to display alongside search results and update in real time when a card is added
+  - A user may select a legendary creature from the search page and create a new empty deck with it as Commander
+  - Add animations for when a card is selected or moved
+  - Limit the cards a user may add to the deck based on Commander format rules
+    - A deck may only have one of each card except for basic lands (there are a few exceptions)
+    - A deck may only contain cards matching its Commander's color identity
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Card show page stretch features
+  - If a card is in one or more decks, those decks are listed from the card's show page
+  - If there are multiple printings of a card from different sets they are accessible from this page.
+  - A card from a particular set may be added to a deck. Cards may be reprinted with different art or text depending on set, but functionally they are the same.
 
-### `npm test`
+- Deck show page stretch features
+  - Animate the drawing of a sample hand for a deck
+  - A user may sort or filter listed cards by:
+    - Name
+    - Converted Mana Cost
+    - Card type
+  - Display whether a deck is legal or not for a the format. Some cards are banned
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Gold
+- Include market price data from tcgplayer.com, this may be displayed on search, card show, and deck show pages. (requires approval for API key)
+- Allow user to mulligan their sample hand. (Select multiple cards to discard then draw that many minus 1. May be repeated multiple times)
+- Allow user to export decklist to file or email
+- Allow user to import decklist from file
+- A user may specify up to 15 cards in a deck to be part of a sideboard that is not part of the normal 99 card deck
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ERD
+![](/planning/Project-4-ERD.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Wireframes
+### User Account Page
+![](/planning/Account-Page.png)
 
-### `npm run eject`
+### User Decks Page
+![](/planning/Decks-Page.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Card Search Page
+![](/planning/Card-Search-Page.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Individual Card Show Page
+![](/planning/Card-Show-Page.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Deck Show Page
+![](/planning/Deck-Show-Page.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technology
+- Express back-end
+- React front-end
+- PostGres Database
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Links/Documentation
+- [Project 4](https://git.generalassemb.ly/jd-seir-4/project-4)
+- [MTG Card API](https://docs.magicthegathering.io/)
+- [Card API JavaScript SDK](https://github.com/MagicTheGathering/mtg-sdk-javascript)
+- [React/Express App Tutorial](https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/)
+- [chartjs Data Visualization](https://www.chartjs.org/)
+- [D3 Data Visualization Examples](https://d3meetup.surge.sh/pages/meetup.html)
